@@ -2,7 +2,7 @@
 
   <div class="header flex" style="background-color: cornsilk; border-bottom: 1px solid darkgrey; align-items: center;">
 
-    <h1 style="margin:0;  padding: 0.5em 1em;">
+    <h1 style="margin:0; padding: 0 1em;">
       &#x1F4C3; <a href="/" @click.prevent="goHome" class="brand">notepad.mx</a>
 
       <span v-if="documentIdShort">

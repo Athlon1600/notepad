@@ -33,14 +33,16 @@
 
     <div id="plain_text_not_ace" class="flex flex-col flex-grow">
 
-      <textarea @keyup="textKeyUp" @keydown="textKeyDown" v-model="text"
+      <textarea @keyup="textKeyUp" @keydown="textKeyDown" @select="textSelect" @mouseup="textSelect" v-model="text"
                 placeholder="Nothing written here yet! Write something!" style="resize: none"
                 class="flex-grow"></textarea>
 
       <div class="flex" style="margin:1em 0; justify-content: space-between;">
 
         <div class="status-bar">
-          Words: {{ wordCount }}, Characters: {{ charCount }}, Lines: {{ lineCount }}
+          Words: {{ wordCount }},
+          Characters: <span v-if="selectedCharCount">{{ selectedCharCount }}/</span>{{ charCount }},
+          Lines: {{ lineCount }}
         </div>
 
         <div>
@@ -77,6 +79,7 @@ export default {
       documentId: '',
       // stats
       charCount: 0,
+      selectedCharCount: 0,
       wordCount: 0,
       lineCount: 0,
       store: store.state
@@ -133,6 +136,23 @@ export default {
     },
     async textKeyUp() {
       this.writeLater();
+    },
+    textSelect(event) {
+
+      const target = event.target;
+
+      let val = target.value;
+      let start = target.selectionStart;
+      let end = target.selectionEnd;
+
+      if (start === end) {
+        this.selectedCharCount = 0;
+      } else {
+
+        let selected = val.substring(start, end);
+        this.selectedCharCount = selected.length;
+      }
+
     },
     async deleteForever() {
 
