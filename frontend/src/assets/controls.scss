@@ -1,0 +1,43 @@
+
+
+.btn {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white !important;
+  padding: 0.6em 1.5em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1em;
+  border-radius: 0.3em;
+
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  background-color: #439946;
+  color: white;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+}
+
+textarea {
+  width: 100%;
+  height: 50vh;
+
+  font-family: "Courier New", serif;
+
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: both;
+}
+
+input:disabled {
+  background-color: #e9ecef;
+  opacity: 1;
+}
