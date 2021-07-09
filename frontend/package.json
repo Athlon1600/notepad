@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "copy:backend": "copyfiles -u 1 dist/**/* ../backend/dist/public",
+    "copy:backend": "copyfiles -u 1 \"dist/**/*\" ../backend/dist/public",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

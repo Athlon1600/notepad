@@ -13,10 +13,11 @@ module.exports = {
     configureWebpack: function (config) {
         return {
             plugins: [
-                new PrerenderSpaPlugin({
-                    staticDir: path.resolve(__dirname, 'dist'),
-                    routes: ['/']
-                }),
+                // https://github.com/chrisvfritz/prerender-spa-plugin/issues/200
+                /*                new PrerenderSpaPlugin({
+                                    staticDir: path.resolve(__dirname, 'dist'),
+                                    routes: ['/']
+                                }),*/
             ]
         }
     },
