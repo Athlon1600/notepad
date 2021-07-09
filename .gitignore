@@ -1,0 +1,7 @@
+.idea
+backend/node_modules
+backend/dist
+backend/storage
+frontend/dist
+frontend/node_modules
+lambda
