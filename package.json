@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "scripts": {
     "build:backend": "cd backend && npm install && npm run build && npm run copy:public",
+    "build:frontend": "cd frontend && npm install && npm run build && npm run copy:backend",
+    "build:": "npm run build:backend && npm run build:frontend",
     "start": "node backend/dist/index.js"
   }
 }
