@@ -18,3 +18,11 @@ npm run build && npm run start
 
 A Docker image will be available soon...
 
+### Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+Sign up for free at:  
+https://signup.heroku.com/
+
+
