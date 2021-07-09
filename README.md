@@ -1,5 +1,8 @@
 # Notepad
 
+![GitHub](https://img.shields.io/github/license/athlon1600/notepad)
+![GitHub last commit](https://img.shields.io/github/last-commit/athlon1600/notepad)
+
 A very simple app for writing and storing notes online.
 
 ## Demo
