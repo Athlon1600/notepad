@@ -3,14 +3,14 @@
   <div class="header flex" style="background-color: cornsilk; border-bottom: 1px solid darkgrey; align-items: center;">
 
     <h1 style="margin:0; padding: 0 1em;">
-      &#x1F4C3; <a href="/" @click.prevent="goHome" class="brand">notepad.mx</a>
+      <span class="hidden md:inline">&#x1F4C3;</span> <a href="/" @click.prevent="goHome" class="brand">notepad.mx</a>
 
       <span v-if="documentIdShort">
         <span style="padding: 0 0.3em;">&ndash;</span>#{{ documentIdShort }}
       </span>
     </h1>
 
-    <div style="flex-grow: 1; margin-right: 1em; text-align: center;">
+    <div style="flex-grow: 1; margin-right: 1em; text-align: center;" class="hidden md:block">
 
       <div>
         <h3 class="text-center">A free cloud-based online notepad</h3>
@@ -18,7 +18,7 @@
 
     </div>
 
-    <div>
+    <div class="hidden md:block">
       <iframe src="https://ghbtns.com/github-btn.html?user=Athlon1600&repo=notepad&type=fork&count=true&size=large"
               frameborder="0" scrolling="0" width="150" height="35" title="GitHub"></iframe>
     </div>
