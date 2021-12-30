@@ -7,6 +7,7 @@
 
       <input type="text" id="phrase" ref="query" placeholder="e.g: chicago mac and pizza"
              autocomplete="off"
+             autocapitalize="off"
              @keydown.enter="login"
              v-model="phrase"
              :disabled="isBusy"
