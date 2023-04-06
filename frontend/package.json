@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
     "copy:backend": "copyfiles -u 1 \"dist/**/*\" ../backend/dist/public",
-    "lint": "vue-cli-service lint"
+    "build": "cross-env NODE_ENV=development webpack",
+    "clean": "rimraf ./dist ./node_modules",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --hot"
   },
   "dependencies": {
     "aes-js": "^3.1.2",
@@ -17,41 +17,25 @@
     "scrypt-async": "^2.0.1",
     "scrypt-js": "^3.0.1",
     "sha.js": "^2.4.11",
-    "vue": "^3.0.0"
+    "vue": "^3.2.47"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "babel-eslint": "^10.1.0",
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
+    "babel-loader": "^9.1.2",
     "copyfiles": "^2.4.1",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0",
-    "node-sass": "^4.12.0",
-    "prerender-spa-plugin": "^3.4.0",
-    "sass-loader": "^8.0.2"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {
-      "no-unused-vars": "off",
-      "no-unreachable": "off"
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.3",
+    "html-webpack-plugin": "^5.5.0",
+    "node-sass": "^8.0.0",
+    "prerender-spa-plugin-next": "^4.2.3",
+    "rimraf": "^4.4.1",
+    "sass-loader": "^13.2.2",
+    "style-loader": "^3.3.2",
+    "vue-loader": "^17.0.1",
+    "vue-template-compiler": "^2.7.14",
+    "webpack": "^5.77.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.13.2"
+  }
 }

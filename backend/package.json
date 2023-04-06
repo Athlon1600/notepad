@@ -19,7 +19,8 @@
     "base64-url": "^2.3.3",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "forever": "^4.0.1"
+    "forever": "^4.0.1",
+    "nodemon": "^2.0.22"
   },
   "devDependencies": {
     "@types/base64-url": "^2.2.0",
