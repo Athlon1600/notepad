@@ -1,9 +1,5 @@
-import {reactive, readonly, watch} from "vue";
-import {EasyStorage} from "./classes/EasyStorage";
-import {Util} from "./classes/Util";
+import {reactive, readonly} from "vue";
 import api from "./api";
-
-const STORAGE_SESSION_ID_KEY = 'session_id';
 
 const _state = reactive({
     isBusy: false, // switching between keys
@@ -16,19 +12,18 @@ const _state = reactive({
     error: '', // any app error - invalid URL, invalid auth, etc..
 });
 
-const bootSession = function () {
-
-    let sid = EasyStorage.get(STORAGE_SESSION_ID_KEY);
-
-    if (!sid) {
-        sid = Util.randomInt();
-        EasyStorage.save(STORAGE_SESSION_ID_KEY, sid);
+const mutations = {
+    setSessionId: (id) => {
+        _state.sessionId = id
+    },
+    updateHash: (hash) => {
+        _state.key = hash;
+    },
+    setKeys(authKey, cipherKey) {
+        _state.authKey = authKey;
+        _state.encryptionKey = cipherKey
     }
-
-    _state.sessionId = sid;
 }
-
-bootSession();
 
 const getters = {
 
@@ -38,15 +33,6 @@ const getters = {
 }
 
 const actions = {
-
-    updateHash(hash) {
-        _state.key = hash;
-    },
-
-    setKeys(authKey, cipherKey) {
-        _state.authKey = authKey;
-        _state.encryptionKey = cipherKey
-    },
 
     async saveContents(contents) {
         await api.save(_state.key, contents);
@@ -65,6 +51,7 @@ const actions = {
 
 export default {
     state: readonly(_state),
+    mutations,
     getters: getters,
     actions: actions
 }

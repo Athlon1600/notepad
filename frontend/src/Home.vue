@@ -5,13 +5,8 @@
 
       <h1 class="text-center"> &#x26A1; Login with a unique pass-phrase</h1>
 
-      <input type="text" id="phrase" ref="query" placeholder="e.g: chicago mac and pizza"
-             autocomplete="off"
-             autocapitalize="off"
-             @keydown.enter="login"
-             v-model="phrase"
-             :disabled="isBusy"
-      >
+      <input type="text" id="phrase" ref="query" placeholder="e.g: chicago mac and pizza" autocomplete="off"
+        autocapitalize="off" @keydown.enter="login" v-model="phrase" :disabled="isBusy">
 
       <div style="margin-top:1em;" class="text-muted">Can be as short as you want, but in order to make it harder for
         others
@@ -133,13 +128,12 @@
 
 <script>
 
-import {Util} from "./classes/Util";
-import {TextUtil} from "./classes/TextUtil";
+import { TextUtil } from "./classes/TextUtil";
+import { Util } from "./classes/Util";
 
-import scrypt from 'scrypt-js';
+import { Security } from "./classes/Security";
+import { APP_KEY } from "./config";
 import store from "./store";
-import {Security} from "./classes/Security";
-import {APP_KEY} from "./config";
 
 export default {
   name: 'home',
@@ -191,15 +185,15 @@ export default {
         // first 16 bytes => authKey
         let authKey = hash.substr(0, 32);
 
-        // second 16 bytes => key we use to encrypt note contents
+        // last 16 bytes => key we use to encrypt note contents
         let encryptionKey = hash.substr(32, 32);
 
-        store.actions.setKeys(authKey, encryptionKey);
+        store.mutations.setKeys(authKey, encryptionKey);
 
         console.log(`Auth Key: ${authKey}`);
         console.log(`Encryption Key: ${encryptionKey}`);
 
-        store.actions.updateHash(val);
+        store.mutations.updateHash(val);
       }
     }
   },
