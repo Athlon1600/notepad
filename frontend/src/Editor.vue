@@ -1,33 +1,31 @@
 <template>
   <div class="flex flex-col flex-grow">
 
-    <div class="flex">
+      <div class="flex items-center">
 
-      <div class="w-50">
-        <p>
-          <input type="checkbox" id="checkbox" v-model="encrypt" @change="encryptCheckboxChanged"/>
-          <label for="checkbox" style="margin-left: 0.5em;">Encrypted</label>
-        </p>
-      </div>
+          <div class="">
+              <p>
+                  <input type="checkbox" id="checkbox" v-model="encrypt" @change="encryptCheckboxChanged"/>
+                  <label for="checkbox" style="margin-left: 0.5em;">Encrypted</label>
+              </p>
+          </div>
 
-      <div class="w-50 text-right">
+          <div v-if="publicUrl" class="flex-grow text-right">
+              Public Link:
+              <input type="text" :value="publicUrl" size="50" onclick="this.select()">
+          </div>
 
-        <div v-if="publicUrl">
-          <p>
-            <a :href="publicUrl" target="_blank">Special Public Link</a>
-          </p>
-        </div>
-
-        <div v-else>
-          <p>Nothing to publish yet!</p>
-        </div>
+          <div v-else>
+              <p>Nothing to publish yet!</p>
+          </div>
 
       </div>
-    </div>
 
     <div>
       <p>All text is automatically saved as you type. If you decide to <u>encrypt</u> your text,
         this note will no longer be accessible by the special public link above. Only gibberish text will be returned.
+          <br>
+          You can store up to 128 <abbr title="where KB = 1024 bytes">KB</abbr> worth of text, or around 40 Word document pages.
       </p>
     </div>
 
