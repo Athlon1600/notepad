@@ -1,4 +1,5 @@
 import {Application, NextFunction, Request, Response, Router} from "express";
+import path from "path";
 
 const express = require('express');
 
@@ -32,12 +33,22 @@ export class Server {
 
         // 10 kilobytes of text MAX!! - ~10K chars
         this.app.use(express.urlencoded({
-            extended: true
+            extended: true,
+            limit: "100kb"
+        }));
+
+        this.app.use(express.text({
+            limit: "100kb"
         }));
     }
 
     protected enableStatic() {
-        this.app.use(express.static(__dirname + '/public'));
+
+        const parentPublic = path.join(__dirname, '../public');
+
+        this.app.use(express.static(parentPublic, {
+            etag: true
+        }));
     }
 
     protected registerNotFoundHandler() {
