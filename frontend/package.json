@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "copy:backend": "copyfiles -u 1 \"dist/**/*\" ../backend/dist/public",
-    "build": "cross-env NODE_ENV=development webpack",
+    "build": "cross-env NODE_ENV=production webpack",
     "clean": "rimraf ./dist ./node_modules",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --hot"
+    "dev": "cross-env NODE_ENV=development webpack",
+    "watch": "cross-env NODE_ENV=development webpack-dev-server --progress --hot"
   },
   "dependencies": {
     "aes-js": "^3.1.2",
