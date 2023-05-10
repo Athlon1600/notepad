@@ -1,14 +1,13 @@
 {
   "name": "backend",
-  "version": "1.0.0",
-  "description": "",
+  "private": true,
+  "version": "0.1.0",
   "main": "dist/index.js",
   "scripts": {
+    "build": "tsc",
+    "dev": "concurrently -k \"npm run watch\" \"npm run serve\"",
     "watch": "tsc -w",
     "serve": "nodemon -e js,html,css dist/index.js",
-    "build": "tsc",
-    "postinstall": "npm run build",
-    "copy:public": "copyfiles -u 1 src/public/* dist",
     "forever-start": "forever start --append dist/index.js",
     "forever-stop": "forever stopall"
   },
@@ -20,12 +19,15 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "forever": "^4.0.1",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "ws": "^8.13.0"
   },
   "devDependencies": {
     "@types/base64-url": "^2.2.0",
     "@types/express": "^4.17.12",
     "@types/node": "^16.0.0",
+    "@types/ws": "^8.5.4",
+    "concurrently": "^8.0.1",
     "copyfiles": "^2.4.1",
     "typescript": "^4.3.5"
   }

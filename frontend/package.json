@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "copy:backend": "copyfiles -u 1 \"dist/**/*\" ../backend/dist/public",
+    "copy:backend": "copyfiles -u 1 \"dist/**/*\" ../backend/public",
     "build": "cross-env NODE_ENV=production webpack",
     "clean": "rimraf ./dist ./node_modules",
     "dev": "cross-env NODE_ENV=development webpack",
