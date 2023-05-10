@@ -1,7 +1,5 @@
-const webpack = require('webpack');
-const { VueLoaderPlugin } = require("vue-loader");
+const {VueLoaderPlugin} = require("vue-loader");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-
 const PrerenderSPAPlugin = require('prerender-spa-plugin-next')
 
 const path = require("path");
@@ -75,7 +73,7 @@ if (isProd) {
         routes: ['/']
     });
 
-    config.plugins.push(prerender);
+    webpackConfig.plugins.push(prerender);
 }
 
 module.exports = webpackConfig;
