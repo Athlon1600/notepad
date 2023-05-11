@@ -5,7 +5,7 @@
 
       <h1 class="text-center"> &#x26A1; Login with a unique pass-phrase</h1>
 
-      <input type="text" id="phrase" ref="query" placeholder="e.g: chicago mac and pizza" autocomplete="off"
+      <input type="text" id="phrase" ref="query" placeholder="e.g: correct horse battery staple" autocomplete="off"
         autocapitalize="off" @keydown.enter="login" v-model="phrase" :disabled="isBusy">
 
       <div style="margin-top:1em;" class="text-muted">Can be as short as you want, but in order to make it harder for
