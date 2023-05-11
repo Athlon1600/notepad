@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
+    "clean": "rimraf ./dist ./node_modules",
     "dev": "concurrently -k \"npm run watch\" \"npm run serve\"",
     "watch": "tsc -w",
     "serve": "nodemon -e js,html,css dist/index.js",
@@ -29,6 +30,7 @@
     "@types/ws": "^8.5.4",
     "concurrently": "^8.0.1",
     "copyfiles": "^2.4.1",
+    "rimraf": "^5.0.0",
     "typescript": "^4.3.5"
   }
 }
