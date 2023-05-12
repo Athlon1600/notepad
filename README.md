@@ -3,7 +3,12 @@
 ![GitHub](https://img.shields.io/github/license/athlon1600/notepad)
 ![GitHub last commit](https://img.shields.io/github/last-commit/athlon1600/notepad)
 
-A very simple app for writing and storing notes online.
+A simple web-based notepad for writing and storing notes online.
+
+## Versions
+
+If you want to continue using v1, go here:  
+https://github.com/Athlon1600/notepad/tree/v1.0.0-rc.1
 
 ## Demo
 
