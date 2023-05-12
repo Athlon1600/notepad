@@ -4,7 +4,7 @@
     "module": "commonjs",
     "strict": true,
     "strictNullChecks": true,
-    "noImplicitReturns": false,
+    "noImplicitReturns": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "dist"
