@@ -21,13 +21,7 @@ export class NotesController {
 
         const contents = Database.get(id);
 
-        if (contents) {
-            res.setHeader('content-type', 'text/plain').send(contents);
-        } else {
-            res.status(404).json({
-                error: 'Not found'
-            });
-        }
+        res.setHeader('content-type', 'text/plain').send(contents || "");
     }
 
     static write(req: Request, res: Response): void {
