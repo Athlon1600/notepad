@@ -4,8 +4,20 @@ import {Util} from "./Util";
 const aesjs = require('aes-js');
 const md5 = require('md5');
 
+const base62 = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const base62Encoder = require('base-x')(base62);
+
 export class Security {
 
+    /**
+     *
+     * @param {Uint8Array} buffer
+     */
+    static base62(buffer) {
+        return base62Encoder.encode(buffer);
+    }
+
+    // stringToByteArray
     static str2ab(str) {
         var buf = new ArrayBuffer(str.length * 2); // 2 bytes for each char
         var bufView = new Uint16Array(buf);
@@ -13,6 +25,15 @@ export class Security {
             bufView[i] = str.charCodeAt(i);
         }
         return bufView;
+    }
+
+    static byteArrayToHexString(uint8Array) {
+        let hexString = '';
+        for (let i = 0; i < uint8Array.length; i++) {
+            const hex = uint8Array[i].toString(16).padStart(2, '0');
+            hexString += hex;
+        }
+        return hexString;
     }
 
     static randomBytes(len) {
@@ -26,7 +47,12 @@ export class Security {
         return arr;
     }
 
-    // always hex. 2 hex chars => 1 byte
+    /**
+     *
+     * @param password
+     * @param salt
+     * @return {Promise<Uint8Array>}
+     */
     static async slowHash(password, salt) {
 
         return new Promise(function (resolve, reject) {
@@ -34,12 +60,14 @@ export class Security {
             let pb = Security.str2ab(password);
             let sb = Security.str2ab(salt);
 
+            // 1 byte = 2 hex chars
             scryptAsync(pb, sb, {
                 N: Math.pow(2, 14),
                 r: 8,
                 p: 1,
-                dkLen: 64,
-                encoding: 'hex'
+                dkLen: 32,
+                encoding: 'binary',
+                interruptStep: 1000
             }, function (derivedKey) {
                 resolve(derivedKey);
             });

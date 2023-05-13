@@ -182,18 +182,7 @@ export default {
 
         this.isBusy = false;
 
-        // first 16 bytes => authKey
-        let authKey = hash.substr(0, 32);
-
-        // last 16 bytes => key we use to encrypt note contents
-        let encryptionKey = hash.substr(32, 32);
-
-        store.mutations.setKeys(authKey, encryptionKey);
-
-        console.log(`Auth Key: ${authKey}`);
-        console.log(`Encryption Key: ${encryptionKey}`);
-
-        store.mutations.updateHash(val);
+        store.mutations.login(hash);
       }
     }
   },

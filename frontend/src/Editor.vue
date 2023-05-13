@@ -91,7 +91,7 @@ export default {
       return null;
     },
     publicUrl() {
-      return window.location.origin + '/notes/' + this.documentId;
+      return window.location.origin + '/notes/' + this.store.urlKey;
     }
   },
   watch: {
@@ -173,7 +173,7 @@ export default {
 
         let response = await api.get(newValue);
 
-        const text = response.text;
+        const text = response;
         console.log(response);
 
         this.documentId = response.uid;

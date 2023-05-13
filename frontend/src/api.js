@@ -8,46 +8,37 @@ class Api {
             method: 'GET',
         }
 
-        return fetch('/api/get?code=' + code, options)
-            .then(response => response.json());
+        return fetch('/api/notes/' + code, options)
+            .then(response => response.text());
     }
 
     /**
      *
      * @param code
      * @param contents
-     * @returns {Promise<SaveResponse>}
+     * @returns {Promise<string>}
      */
     async save(code, contents) {
 
         const options = {
             method: 'POST',
             headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
+                "Content-Type": "text/plain"
             },
-            body: new URLSearchParams({
-                code: code,
-                contents: contents
-            })
+            body: contents
         };
 
-        return fetch('/api/save', options)
-            .then(response => response.json());
+        return fetch('/api/notes/' + code, options)
+            .then(response => response.text());
     }
 
     async delete(code) {
 
         const options = {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: new URLSearchParams({
-                code: code
-            })
+            method: 'DELETE'
         };
 
-        return fetch('/api/delete', options)
+        return fetch('/api/notes/' + code, options)
             .then(response => response.json());
     }
 }

@@ -11,12 +11,12 @@
   },
   "dependencies": {
     "aes-js": "^3.1.2",
+    "base-x": "^4.0.0",
     "core-js": "^3.6.5",
     "debounce": "^1.2.1",
     "md5": "^2.3.0",
     "normalize.css": "^8.0.1",
     "scrypt-async": "^2.0.1",
-    "scrypt-js": "^3.0.1",
     "sha.js": "^2.4.11",
     "vue": "^3.2.47"
   },

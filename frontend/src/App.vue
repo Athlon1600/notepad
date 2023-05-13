@@ -31,8 +31,8 @@
       <h1>{{ error }}</h1>
     </div>
 
-    <Home v-if="!editor"></Home>
-    <editor v-if="editor"></editor>
+    <editor v-if="documentIdShort"></editor>
+    <Home v-else></Home>
 
   </div>
 
@@ -43,7 +43,6 @@ import Editor from "./Editor";
 import Home from "./Home";
 
 import store from "./store";
-import {watch} from "vue";
 
 export default {
   name: 'App',
@@ -74,18 +73,6 @@ export default {
     goHome() {
       store.actions.reset();
     }
-  },
-  mounted() {
-
-    watch(() => store.getters.key, (newValue) => {
-
-      // we must be in EDIT mode!
-      this.editor = !!newValue;
-
-    }, {
-      immediate: true
-    });
-
   }
 }
 </script>
