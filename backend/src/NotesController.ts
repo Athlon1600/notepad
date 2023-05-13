@@ -7,11 +7,11 @@ const validateKey = (key: string) => {
 }
 
 export class NotesController {
-
+    
     static index(req: Request, res: Response): void {
 
         res.json({
-            message: 'Send POST/DELETE to /files/:key to manage notes'
+            message: 'Send POST/DELETE to /notes/:key to manage notes'
         });
     }
 
