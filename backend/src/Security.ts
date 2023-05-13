@@ -6,7 +6,7 @@ const crypto = require('crypto');
 const slowHashSecretSalt = Config.slowHashSalt;
 const fastHashSecretSalt = Config.fastHashSalt;
 
-function md5(data: string): string {
+export const md5 = (data: string): string => {
     return crypto.createHash('md5').update(data).digest("hex");
 }
 

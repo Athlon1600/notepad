@@ -1,30 +1,46 @@
+import {md5} from "./Security";
+
 const fs = require('fs');
 
 const notesPath = __dirname + '/../storage';
 
+const pathFromCode = (key: string): string => {
+
+    // to avoid passing of slashes, dots, etc
+    const safeKey = md5(key);
+
+    return `${notesPath}/${safeKey}`;
+}
+
+// generic interface for storage... should be adapted to support Redis, SQL etc..
 export class Database {
 
+    static count(): number {
+        return fs.readdirSync(notesPath).length;
+    }
+
     static get(code: string) {
+
         try {
-            return fs.readFileSync(`${notesPath}/${code}.txt`, 'utf8');
+            return fs.readFileSync(pathFromCode(code), 'utf8');
         } catch (ex) {
             return null;
         }
     }
 
-    static save(code: string, contents: string) {
+    static save(code: string, contents: string): void {
 
         if (!fs.existsSync(notesPath)) {
             fs.mkdirSync(notesPath);
         }
 
-        fs.writeFileSync(notesPath + `/${code}.txt`, contents);
+        fs.writeFileSync(pathFromCode(code), contents);
     }
 
-    static remove(code: string) {
+    static remove(code: string): void {
 
         try {
-            fs.unlinkSync(`${notesPath}/${code}.txt`);
+            fs.unlinkSync(pathFromCode(code));
         } catch (ex) {
             // removeQuietly
         }
