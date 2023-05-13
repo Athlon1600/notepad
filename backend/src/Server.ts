@@ -37,6 +37,7 @@ export class Server {
             limit: "100kb"
         }));
 
+        // Expects: Content-Type: "text/plain"
         this.app.use(express.text({
             limit: "100kb"
         }));
@@ -66,14 +67,11 @@ export class Server {
 
         this.app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 
-            console.error(err);
-
             let msg = err.toString();
 
             return res.status(500).json({
                 status: 500,
-                'message': 'Something went wrong...',
-                'error': msg
+                error: msg
             });
 
         });
