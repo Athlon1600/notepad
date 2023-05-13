@@ -1,12 +1,19 @@
-import {Request, Response, Router} from "express";
+import {NextFunction, Request, RequestHandler, Response, Router} from "express";
 import {Database} from "./Database";
 import {Server} from "./Server";
 import {Config} from "./config";
 import {uidFromAuthKey} from "./Util";
+import {NotesController} from "./NotesController";
 
 const server = new Server();
 
 const apiRouter = Router();
+
+const safeHandler = function (fn: RequestHandler) {
+    return function (req: Request, res: Response, next: NextFunction) {
+        return Promise.resolve(fn(req, res, next)).catch(next);
+    };
+};
 
 apiRouter.get('/', function (req: Request, res: Response) {
 
@@ -76,14 +83,27 @@ apiRouter.post('/delete', function (req: Request, res: Response) {
 
 server.app.use('/api', apiRouter);
 
+const notesRouter = Router();
+notesRouter.get('/', NotesController.index);
+notesRouter.get('/:id', NotesController.read);
+notesRouter.post('/:id', NotesController.write);
+notesRouter.delete('/:id', NotesController.delete);
+
+server.app.use('/api/notes', notesRouter);
+
 server.app.get('/notes/:id', function (req: Request, res: Response) {
 
     const uid = req.params['id'];
 
     const contents = Database.get(uid);
 
-    res.setHeader('content-type', 'text/plain');
-    res.send(contents);
+    if (contents) {
+        res.setHeader('content-type', 'text/plain');
+        res.send(contents);
+    } else {
+        res.status(404).json({error: "Note not found"});
+    }
+
 })
 
 const port: number = Config.port;
