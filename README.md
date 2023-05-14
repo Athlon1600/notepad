@@ -15,11 +15,11 @@ Useful for easy sharing of text between people or devices.
 If you want to continue using v1, go here:  
 https://github.com/Athlon1600/notepad/tree/v1.0.0-rc.1
 
-## Demo
+## :star: Demo
 
 - https://notepad.mx
 
-## Deployment (manual)
+## :hammer: Deployment (manual)
 
 Deploy this whole thing to production in three lines:
 
@@ -47,6 +47,10 @@ https://signup.heroku.com/
 - First 16 bytes is your **authentication key**  used in API calls when sending data back and forth
 - Next 16 bytes is your **encryption key** used to encrypt that text data
 - Encryption key never leaves your browser.
+
+See the drawing below:  
+
+![scrypt](https://github.com/Athlon1600/notepad/assets/1063088/aed67aae-bd10-4917-a149-fc2db0ad1d17)
 
 ## To-do list
 
