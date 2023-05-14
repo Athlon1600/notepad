@@ -55,6 +55,7 @@ See the drawing below:
 ## To-do list
 
 - rewrite frontend to use TypeScript
+- use websockets to better support multiple sessions editing same document scenarios
 - add option to use Redis for storing notes
 - ability to use this app via command line
 - update the editor to allow subdivision of long text into multiple subsections via linebreaks
