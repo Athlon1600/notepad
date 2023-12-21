@@ -1,0 +1,42 @@
+(_header) {
+	header_down -Server
+	header_down -X-Powered-By
+}
+
+(app) {
+	encode gzip
+
+	root * public
+	file_server
+
+	reverse_proxy /api/* localhost:3000 {
+		import _header
+	}
+
+	handle_errors {
+		respond "{err.status_code} {err.status_text}"
+	}
+}
+
+localhost {
+	import app
+
+	header / {
+		-ETag
+	}
+
+	handle_errors {
+		rewrite * /error.html
+		templates
+		file_server
+	}
+}
+
+notepad.test {
+	import app
+	tls internal
+}
+
+notepad.mx {
+	import app
+}
