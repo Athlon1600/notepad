@@ -1,12 +1,12 @@
 <template>
-  <div class="flex flex-col flex-grow">
+  <div class="flex flex-col flex-grow mt-5">
 
       <div class="flex items-center">
 
           <div class="">
               <p>
                   <input type="checkbox" id="checkbox" v-model="encrypt" @change="encryptCheckboxChanged"/>
-                  <label for="checkbox" style="margin-left: 0.5em;">Encrypted</label>
+                  <label for="checkbox" class="ml-2">Encrypted</label>
               </p>
           </div>
 
@@ -35,7 +35,7 @@
                 placeholder="Nothing written here yet! Write something!" style="resize: none"
                 class="flex-grow"></textarea>
 
-      <div class="flex" style="margin:1em 0; justify-content: space-between;">
+      <div class="flex justify-between my-5">
 
         <div class="status-bar">
           Words: {{ wordCount }},
@@ -44,7 +44,7 @@
         </div>
 
         <div>
-          <a href="" @click.prevent="deleteForever" class="bold text-red">Delete Forever</a>
+          <a href="" @click.prevent="deleteForever" class="font-bold text-red-500">Delete Forever</a>
         </div>
 
       </div>

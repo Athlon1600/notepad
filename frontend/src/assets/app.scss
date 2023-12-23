@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'controls.scss';
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+h1, h2, h3 {
+  @apply font-bold mb-4;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Trebuchet MS', sans-serif;
+  color: #2c3e50;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+#app {
+  @apply flex flex-col;
+  height: 100%;
+}
+
+.header {
+  @apply flex items-center;
+  @apply px-4 py-2;
+  background-color: cornsilk;
+  border-bottom: 1px solid darkgrey;
+
+  > h1 > a {
+
+    font-family: "Arial Rounded MT Bold", serif;
+    color: #f42f42;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+  }
+
+}
+
+.text-muted {
+  color: #a3a1a1;
+}
+
+a, a:visited, a:active {
+  color: #0000EE;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: red;
+}
+
+input[type=text] {
+  padding: 0.5rem 1rem;
+  color: #16191f;
+  border-radius: 0.2rem;
+  border: 1px solid #aab7b8;
+}
+
+#phrase {
+  width: 100%;
+  font-size: 1.6em;
+  padding: 0.8em 1em;
+
+  // text-transform: uppercase;
+  ///font-weight: 400;
+  text-align: center;
+
+  color: #0d4163 !important;
+
+  font-family: monospace, courier;
+
+  border-radius: 8px;
+  box-shadow: 0 12px 18px 2px rgba(34, 0, 51, .04), 0 6px 22px 4px rgba(7, 48, 114, .12), 0 6px 10px -4px rgba(14, 13, 26, .12);
+
+  &::placeholder {
+    color: currentColor;
+    opacity: 0.2;
+  }
+
+}
+
+
+#notepad_features {
+
+  & > li {
+    margin-bottom: 0.5em;
+  }
+
+}
+

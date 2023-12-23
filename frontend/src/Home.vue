@@ -8,12 +8,12 @@
       <input type="text" id="phrase" ref="query" placeholder="e.g: correct horse battery staple" autocomplete="off"
         autocapitalize="off" @keydown.enter="login" v-model="phrase" :disabled="isBusy">
 
-      <div style="margin-top:1em;" class="text-muted">Can be as short as you want, but in order to make it harder for
+      <div class="text-muted mt-2">Can be as short as you want, but in order to make it harder for
         others
         to guess (or brute-force), keep it at least 4 words.
       </div>
 
-      <p>
+      <p class="my-5">
         <small class="text-muted">Chars: {{ passLen }}. Words: {{ wordCount }}. Entropy: {{ entropy }}. Dictionary
           entropy: {{ phraseEntropy }}</small>
       </p>
@@ -22,7 +22,7 @@
 
     <hr>
 
-    <div style="margin-bottom:5em;">
+    <div class="mb-8">
 
       <h2>What is this?</h2>
 
@@ -50,7 +50,7 @@
 
       <p>Here are the features I wanted:</p>
 
-      <ol id="notepad_features">
+      <ol id="notepad_features" class="list-decimal pl-8">
         <li>
 
           <strong>No registrations or logins!</strong> I don't wish to give anyone my email, or memorize yet another
