@@ -25,7 +25,7 @@
                 placeholder="Nothing written here yet! Write something!" style="resize: none"
                 class="flex-grow"></textarea>
 
-      <div class="flex justify-between my-5">
+      <div class="flex justify-between mt-2 mb-5">
 
         <div class="status-bar">
           Words: {{ wordCount }},
