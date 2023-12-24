@@ -1,7 +1,7 @@
 import {createApp} from 'vue'
-import App from './App.vue'
+import App from './components/App.vue'
 
-import '../src/assets/app.scss';
+import '../src/sass/app.scss';
 import store from "./store";
 import {EasyStorage} from "./classes/EasyStorage";
 import {Util} from "./classes/Util";

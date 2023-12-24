@@ -3,7 +3,7 @@
   <div class="header">
 
     <h1 class="mb-0">
-      <span class="hidden md:inline">&#x1F4C3;</span> <a href="/" @click.prevent="goHome" class="brand">notepad.mx</a>
+      <span class="hidden md:inline">&#x1F4C3;</span> <a href="/frontend/public" @click.prevent="goHome" class="brand">notepad.mx</a>
 
       <span v-if="documentIdShort">
         <span class="mx-2">&ndash;</span>#{{ documentIdShort }}
@@ -33,10 +33,10 @@
 </template>
 
 <script>
-import Editor from "./Editor";
-import Home from "./Home";
+import Editor from "./Editor.vue";
+import Home from "./Home.vue";
 
-import store from "./store";
+import store from "../store";
 
 export default {
   name: 'App',

@@ -128,12 +128,12 @@
 
 <script>
 
-import { TextUtil } from "./classes/TextUtil";
-import { Util } from "./classes/Util";
+import { TextUtil } from "../classes/TextUtil";
+import { Util } from "../classes/Util";
 
-import { Security } from "./classes/Security";
-import { APP_KEY } from "./config";
-import store from "./store";
+import { Security } from "../classes/Security";
+import { APP_KEY } from "../config";
+import store from "../store";
 
 export default {
   name: 'home',

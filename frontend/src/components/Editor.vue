@@ -57,12 +57,12 @@
 <script>
 import {watch} from "vue";
 
-import {TextUtil} from "./classes/TextUtil";
+import {TextUtil} from "../classes/TextUtil";
 import debounce from "debounce";
-import store from "./store";
-import {Security} from "./classes/Security";
-import api from "./api";
-import {Util} from "./classes/Util";
+import store from "../store";
+import {Security} from "../classes/Security";
+import api from "../api";
+import {Util} from "../classes/Util";
 
 // https://github.com/reddit-archive/reddit/blob/753b17407e9a9dca09558526805922de24133d53/r2/r2/models/link.py#L149
 const TEXT_MAX_LEN = 40000;
