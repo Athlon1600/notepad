@@ -10,16 +10,15 @@ Useful for easy sharing of text between people or devices.
 - Supports client-side encryption
 - Extremely minimal and lightweight
 
-## Versions
-
-If you want to continue using v1, go here:  
-https://github.com/Athlon1600/notepad/tree/v1.0.0-rc.1
-
 ## :star: Demo
 
-- https://notepad.mx
+Exact version of this application:
 
-## :hammer: Deployment (manual)
+- https://demo.notepad.mx
+
+## :hammer: Deployment to Production
+
+Rent a server for free at [linode.com](https://www.linode.com/lp/refer/?r=cee8aa429cd4cbb5a6e6d1ebfd8986f661d8ef4e)
 
 Deploy this whole thing to production in three lines:
 
@@ -29,26 +28,32 @@ cd notepad
 npm run build && npm run start
 ```
 
-This will build Vue frontend first, move the resulting bundle to the `/public` directory
+This will build Vue frontend first, and then move the resulting bundle to the `/public` directory
 of the backend application from which the frontend will be served from.
 
-A Docker image will be available soon...
+Application will then be available on port `3000`
 
-### Deploy to Heroku
+If you want HTTPS support out of the box, you should install Caddy:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+```shell
+wget -qO- https://github.com/caddyserver/caddy/releases/download/v2.7.5/caddy_2.7.5_linux_amd64.tar.gz | tar -xz && rm -f caddy_2.7.5_linux_amd64.tar.gz LICENSE README.md && chmod +x caddy && mv caddy /usr/local/bin/caddy
+```
 
-Sign up for free at:  
-https://signup.heroku.com/
+Be sure to modify `backend/etc/Caddyfile` replacing `notepad.mx` with your own domain,
+and then run:
+
+```shell
+cd backend && caddy run --config etc/Caddyfile 
+```
 
 ## How it works
 
-- You login using a passphrase which produces a hash value of 32 bytes
+- You login using a passphrase which produces a hash value of 32 bytes (or 64 characters in hex)
 - First 16 bytes is your **authentication key**  used in API calls when sending data back and forth
 - Next 16 bytes is your **encryption key** used to encrypt that text data
 - Encryption key never leaves your browser.
 
-See the drawing below:  
+See the drawing below:
 
 ![scrypt](https://github.com/Athlon1600/notepad/assets/1063088/aed67aae-bd10-4917-a149-fc2db0ad1d17)
 
@@ -59,6 +64,11 @@ See the drawing below:
 - add option to use Redis for storing notes
 - ability to use this app via command line
 - update the editor to allow subdivision of long text into multiple subsections via linebreaks
+
+## Versions
+
+If you want to continue using v1, go here:  
+https://github.com/Athlon1600/notepad/tree/v1.0.0-rc.1
 
 ## External Links
 
