@@ -4,7 +4,7 @@
 
     <h1 class="mb-0">
         <span class="hidden md:inline">&#x1F4C3;</span>
-        <a href="/frontend/public" @click.prevent="goHome" class="brand">notepad.mx</a>
+        <a href="/" @click.prevent="goHome" class="brand">notepad.mx</a>
         <template v-if="documentIdShort">
             <span class="mx-2">&ndash;</span>#{{ documentIdShort }}
         </template>

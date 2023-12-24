@@ -5,26 +5,16 @@
 
           <div class="">
               <p>
-                  <input type="checkbox" id="checkbox" v-model="encrypt" @change="encryptCheckboxChanged"/>
+                  <input type="checkbox" id="checkbox" v-model="encrypt" @change="encryptCheckboxChanged" disabled/>
                   <label for="checkbox" class="ml-2">Encrypted</label>
               </p>
-          </div>
-
-          <div v-if="publicUrl" class="flex-grow text-right">
-              Public Link:
-              <input type="text" :value="publicUrl" size="50" onclick="this.select()">
-          </div>
-
-          <div v-else>
-              <p>Nothing to publish yet!</p>
           </div>
 
       </div>
 
     <div>
-      <p>All text is automatically saved as you type. If you decide to <u>encrypt</u> your text,
-        this note will no longer be accessible by the special public link above. Only gibberish text will be returned.
-          <br>
+      <p>All text is automatically encrypted and saved as you type.
+
           You can store up to 128 <abbr title="where KB = 1024 bytes">KB</abbr> worth of text, or around 40 Word document pages.
       </p>
     </div>
@@ -73,7 +63,7 @@ export default {
     return {
       isBusy: true,
       text: '',
-      encrypt: false,
+      encrypt: true,
       documentId: '',
       // stats
       charCount: 0,
@@ -107,10 +97,9 @@ export default {
 
         let text = this.text;
 
-        if (this.encrypt) {
-          let encrypted = Security.encrypt(text, store.state.encryptionKey);
-          text = JSON.stringify(encrypted);
-        }
+        // always store encrypted
+        let encrypted = Security.encrypt(text, store.state.encryptionKey);
+        text = JSON.stringify(encrypted);
 
         await store.actions.saveContents(text);
 
@@ -121,7 +110,7 @@ export default {
     },
     writeLater: debounce(async function () {
       await this.writeNow();
-    }, 1000),
+    }, 800),
     textKeyDown(event) {
 
       if (event.ctrlKey || event.metaKey) {
@@ -181,12 +170,9 @@ export default {
         if (text && Util.isJson(text)) {
 
           const json = Util.parseJsonQuietly(text);
-
           this.text = Security.decrypt(json, store.state.encryptionKey);
-          this.encrypt = true;
 
         } else {
-          this.encrypt = false;
           this.text = text;
         }
 
