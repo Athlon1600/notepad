@@ -1,13 +1,13 @@
 <template>
 
-  <div class="header">
+  <div class="header" :style="{'background-image': `linear-gradient(to right, cornsilk, cornsilk, ${noteColor})`}">
 
     <h1 class="mb-0">
-      <span class="hidden md:inline">&#x1F4C3;</span> <a href="/frontend/public" @click.prevent="goHome" class="brand">notepad.mx</a>
-
-      <span v-if="documentIdShort">
-        <span class="mx-2">&ndash;</span>#{{ documentIdShort }}
-      </span>
+        <span class="hidden md:inline">&#x1F4C3;</span>
+        <a href="/frontend/public" @click.prevent="goHome" class="brand">notepad.mx</a>
+        <template v-if="documentIdShort">
+            <span class="mx-2">&ndash;</span>#{{ documentIdShort }}
+        </template>
     </h1>
 
     <h3 class="hidden md:block flex-grow text-center mb-0">A free cloud-based online notepad</h3>
@@ -25,7 +25,7 @@
       <h1>{{ error }}</h1>
     </div>
 
-    <editor v-if="documentIdShort"></editor>
+    <editor v-if="state.authKey"></editor>
     <Home v-else></Home>
 
   </div>
@@ -53,6 +53,14 @@ export default {
   computed: {
     error() {
       return store.state.error
+    },
+    noteColor(){
+        if (store.state.authKey) {
+            const hex = store.state.authKey.substr(0, 8);
+            return '#' + hex;
+        }
+
+        return 'cornsilk';
     },
     documentIdShort() {
 

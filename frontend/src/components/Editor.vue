@@ -165,7 +165,7 @@ export default {
   mounted() {
 
     // Logged in as new user!
-    watch(() => store.getters.key, async (newValue, oldValue) => {
+    watch(() => store.state.authKey, async (newValue, oldValue) => {
 
       this.isBusy = true;
 

@@ -24,6 +24,10 @@ html, body {
   height: 100%;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 body {
   font-family: 'Trebuchet MS', sans-serif;
   color: #2c3e50;

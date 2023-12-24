@@ -1,17 +1,32 @@
-import {reactive, readonly} from "vue";
+import {computed, reactive, readonly, watch} from "vue";
 import api from "./api";
 import {Security} from "./classes/Security";
 
 const _state = reactive({
-    isBusy: false, // switching between keys
+    // switching between keys
+    isBusy: false,
+
+    // any app error - invalid URL, invalid auth, etc..
+    error: '',
     sessionId: null,
 
-    authKey: '',
-    encryptionKey: '', // cipherKey
+    key: sessionStorage.getItem('vue-key'),
+
+    // first 32 bits we use for authentication
+    authKey: computed(() => {
+        return _state.key ? (_state.key || []).slice(0, 32) : null;
+    }),
+
+    // next 32 bits = encryption key
+    encryptionKey: computed(() => {
+        return _state.key ? (_state.key || []).slice(32, 64) : null;
+    }),
     urlKey: '',
 
-    key: '',
-    error: '', // any app error - invalid URL, invalid auth, etc..
+});
+
+watch(() => _state.key, (newValue) => {
+    sessionStorage.setItem('vue-key', newValue);
 });
 
 const mutations = {
@@ -21,44 +36,38 @@ const mutations = {
 
     /**
      *
-     * @param {Uint8Array|String} hash
+     * @param {Uint8Array} hash
      */
     login: (hash) => {
 
+        console.log(hash);
+
         const hex = Security.byteArrayToHexString(hash);
 
-        // first 32 bits we use for authentication
-        _state.authKey = hex.slice(0, 32);
-
-        // next 32 bits = encryption key
-        _state.encryptionKey = hex.slice(32, 64);
-
-        _state.key = _state.authKey;
+        _state.key = hex;
         _state.urlKey = Security.base62(hash.slice(0, 16));
     }
 }
 
 const getters = {
 
-    get key() {
-        return _state.key;
+    get test() {
+        return "test";
     }
 }
 
 const actions = {
 
     async saveContents(contents) {
-        await api.save(_state.key, contents);
+        await api.save(_state.authKey, contents);
     },
 
     async deleteNote() {
-        await api.delete(_state.key);
+        await api.delete(_state.authKey);
     },
 
     reset() {
         _state.key = '';
-        _state.authKey = '';
-        _state.encryptionKey = '';
     }
 }
 
