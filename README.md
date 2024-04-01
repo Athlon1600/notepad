@@ -16,7 +16,24 @@ Exact version of this application:
 
 - https://demo.notepad.mx
 
-## :hammer: Deployment to Production
+
+## :whale2: Deploy using Docker
+
+Rent a server for free at [linode.com](https://www.linode.com/lp/refer/?r=cee8aa429cd4cbb5a6e6d1ebfd8986f661d8ef4e)
+
+Install Docker 19+ on your new server:
+
+```shell
+curl -sSL https://get.docker.com/ | sh
+```
+
+Build and Run:
+
+```shell
+docker compose up --build -d
+```
+
+## :hammer: Deployment to Production (manual)
 
 Rent a server for free at [linode.com](https://www.linode.com/lp/refer/?r=cee8aa429cd4cbb5a6e6d1ebfd8986f661d8ef4e)
 

@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  backend:
+    environment:
+      NODE_ENV: production
+    build:
+      context: "."
+      target: "runner"
+    volumes:
+      - ./backend/storage:/app/backend/storage
+    ports:
+      - "3000:3000"
