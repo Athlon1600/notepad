@@ -14,7 +14,7 @@ Useful for easy sharing of text between people or devices.
 
 Exact version of this application:
 
-- https://demo.notepad.mx
+- https://notepad.mx
 
 
 ## :whale2: Deploy using Docker
@@ -27,9 +27,11 @@ Install Docker 19+ on your new server:
 curl -sSL https://get.docker.com/ | sh
 ```
 
-Build and Run:
+Pull this repo and then run:
 
 ```shell
+git clone https://github.com/Athlon1600/notepad.git
+cd notepad
 docker compose up --build -d
 ```
 
@@ -97,7 +99,6 @@ https://github.com/Athlon1600/notepad/tree/v1.0.0-rc.1
 ## External Links
 
 - https://ricmoo.github.io/scrypt-js/
+- http://aes.online-domain-tools.com/
 - https://www.proxynova.com/tools/brute-force-calculator
 - https://en.wikipedia.org/wiki/Base62
-- https://webpack.js.org/configuration#set-up-a-new-webpack-project
-- https://createapp.dev/webpack/vue--css--eslint
