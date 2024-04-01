@@ -10,7 +10,7 @@
         </template>
     </h1>
 
-    <h3 class="hidden md:block flex-grow text-center mb-0">A free cloud-based online notepad</h3>
+    <h3 class="hidden md:block flex-grow text-center mb-0">Store your notes securely online</h3>
 
     <div class="hidden md:block">
       <iframe src="https://ghbtns.com/github-btn.html?user=Athlon1600&repo=notepad&type=fork&count=true&size=large"

@@ -1,10 +1,6 @@
-import {Config} from "./config";
 import * as Buffer from "buffer";
 
 const crypto = require('crypto');
-
-const slowHashSecretSalt = Config.slowHashSalt;
-const fastHashSecretSalt = Config.fastHashSalt;
 
 export const md5 = (data: string): string => {
     return crypto.createHash('md5').update(data).digest("hex");
@@ -25,12 +21,12 @@ export const fastHash = function (data: string): Buffer {
     return crypto.createHash('sha512').update(data).digest();
 }
 
-export const slowHash = function (data: string): Buffer {
+export const slowHash = function (data: string, salt: string): Buffer {
 
     // default
     let cost = Math.pow(2, 14);
 
-    return crypto.scryptSync(data, slowHashSecretSalt, 32, {
+    return crypto.scryptSync(data, salt, 32, {
         cost: cost,
         blockSize: 8, // default
         parallelization: 1, // default

@@ -1,7 +1,3 @@
-import {Config} from "./config";
-import Buffer from "buffer";
-import {fastHash} from "./Security";
-
 const base64url = require('base64-url');
 
 const base62 = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -9,12 +5,24 @@ const base62Encoder = require('base-x')(base62);
 
 // misc functions that don't fit anywhere else
 
-export const uidFromAuthKey = function (data: string) {
+export const hexStringToByteArray = (hexString: string): Uint8Array => {
+    // Remove any spaces or other characters that might be present
+    hexString = hexString.replace(/\s/g, '');
 
-    const maxLen = Config.noteIdMaxLen;
-    const hash: Buffer = fastHash(data);
+    // Ensure the input is a valid hexadecimal string
+    if (!/^[0-9a-fA-F]+$/.test(hexString)) {
+        throw new Error('Invalid hexadecimal string');
+    }
 
-    return base64url.encode(hash).substr(0, maxLen);
+    // Create a Uint8Array to store the result
+    const byteArray = new Uint8Array(hexString.length / 2);
+
+    // Parse each pair of hexadecimal characters and convert to bytes
+    for (let i = 0; i < hexString.length; i += 2) {
+        byteArray[i / 2] = parseInt(hexString.slice(i, i + 2), 16);
+    }
+
+    return byteArray;
 }
 
 const stringToByteArray = (text: string): Uint8Array => {
