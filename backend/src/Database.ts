@@ -7,9 +7,9 @@ const notesPath = __dirname + '/../storage';
 const pathFromCode = (key: string): string => {
 
     // to avoid passing of slashes, dots, etc
-    const safeKey = md5(key);
+    const storageKey = md5(key);
 
-    return `${notesPath}/${safeKey}`;
+    return `${notesPath}/${storageKey}`;
 }
 
 // generic interface for storage... should be adapted to support Redis, SQL etc..
