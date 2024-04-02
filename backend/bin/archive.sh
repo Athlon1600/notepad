@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define directories
-SCRIPT_DIR=$(dirname "$0")
-BACKEND_DIR=$(readlink -f "$(dirname "$SCRIPT_DIR")")
+BIN_DIR="$(dirname "$(readlink -f "$0")")"
+BACKEND_DIR="$(dirname "$BIN_DIR")"
 STORAGE_DIR="$BACKEND_DIR/storage"
 ARCHIVE_DIR="$BACKEND_DIR/public"
 
