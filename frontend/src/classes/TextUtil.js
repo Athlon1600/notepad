@@ -9,6 +9,10 @@ function humanFileSize(size) {
 
 export class TextUtil {
 
+    static stringContainsIgnoreCase(haystack, needle) {
+        return (haystack || '').toLowerCase().includes((needle || '').toLowerCase());
+    }
+
     static wordCount(text) {
 
         if (!text) {

@@ -55,6 +55,18 @@ export class Util {
         return Math.floor(Math.random() * (max - min) + min);
     }
 
+    static randomAlphaNumericString(len = 16) {
+
+        let result = '';
+
+        while (result.length < len) {
+            const temp = (this.randomInt(0, 9999999)).toString(36);
+            result = result.concat(temp);
+        }
+
+        return result.slice(0, len);
+    }
+
     static arrayNestedGet(array, key) {
 
         let segments = key.split('.');
