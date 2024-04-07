@@ -15,6 +15,7 @@
     "core-js": "^3.6.5",
     "debounce": "^1.2.1",
     "md5": "^2.3.0",
+    "sass": "^1.74.1",
     "scrypt-async": "^2.0.1",
     "sha.js": "^2.4.11",
     "vue": "^3.2.47"
@@ -28,7 +29,6 @@
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.3",
     "html-webpack-plugin": "^5.5.0",
-    "node-sass": "^8.0.0",
     "postcss-loader": "^7.3.3",
     "prerender-spa-plugin-next": "^4.2.3",
     "rimraf": "^4.4.1",

@@ -1,4 +1,4 @@
-FROM node:16-alpine3.14 AS builder
+FROM node:20-alpine3.18 AS builder
 WORKDIR /app
 
 COPY backend/package.json ./backend/
@@ -9,8 +9,7 @@ RUN npm install --prefix ./backend/
 RUN npm install --prefix ./frontend/
 
 
-## has to be 16 for now otherwise SASS does not compile
-FROM node:16-alpine3.14 as vue-build
+FROM node:20-alpine3.18 as vue-build
 WORKDIR /app
 COPY --from=builder /app/frontend ./frontend
 COPY ./frontend ./frontend
