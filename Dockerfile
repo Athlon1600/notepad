@@ -22,6 +22,9 @@ WORKDIR /app
 
 COPY --from=vue-build /app/frontend ./frontend
 COPY --from=builder /app/backend ./backend
+
+RUN apk --update add tar
+
 COPY ./backend ./backend
 RUN cd backend && npm run build
 
