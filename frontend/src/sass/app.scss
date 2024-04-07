@@ -109,6 +109,7 @@ input[type=text] {
 #notepad_features {
 
   & > li {
+    @apply list-disc list-inside;
     margin-bottom: 0.5em;
   }
 
