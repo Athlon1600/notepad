@@ -29,7 +29,14 @@ class Api {
         };
 
         return fetch('/api/notes/' + code, options)
-            .then(response => response.text());
+            .then(response => {
+
+                if (!response.ok) {
+                    throw new Error('Error: ' + response.statusText);
+                }
+
+                return response.text();
+            });
     }
 
     async delete(code) {

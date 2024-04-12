@@ -2,7 +2,7 @@
   <div class="flex flex-col flex-grow mt-5">
 
     <div>
-      <p>All text is automatically encrypted and saved as you type.
+      <p>🔒 All text is automatically encrypted and saved as you type.
 
           You can store up to 128 <abbr title="where KB = 1024 bytes">KB</abbr> worth of text, or around 40 Word document pages.
       </p>
