@@ -50,9 +50,7 @@ import {watch} from "vue";
 import {TextUtil} from "../classes/TextUtil";
 import debounce from "debounce";
 import store from "../store";
-import {Security} from "../classes/Security";
-import api from "../api";
-import {Util} from "../classes/Util";
+import {SecureStorage} from "../classes/SecureStorage";
 
 // https://github.com/reddit-archive/reddit/blob/753b17407e9a9dca09558526805922de24133d53/r2/r2/models/link.py#L149
 const TEXT_MAX_LEN = 40000;
@@ -69,19 +67,7 @@ export default {
       charCount: 0,
       selectedCharCount: 0,
       wordCount: 0,
-      lineCount: 0,
-      store: store.state
-    }
-  },
-  computed: {
-    isWritable() {
-      return true;
-    },
-    dateLastSavedAt() {
-      return null;
-    },
-    publicUrl() {
-      return window.location.origin + '/notes/' + this.store.urlKey;
+      lineCount: 0
     }
   },
   watch: {
@@ -95,13 +81,11 @@ export default {
 
       try {
 
-        let text = this.text;
+        const text = this.text;
+        const authKey = store.state.authKey;
+        const password = store.state.encryptionKey;
 
-        // always store encrypted
-        let encrypted = Security.encrypt(text, store.state.encryptionKey);
-        text = JSON.stringify(encrypted);
-
-        await store.actions.saveContents(text);
+        await SecureStorage.write(authKey, text, password);
 
       } catch (ex) {
         alert('Something went wrong during saving');
@@ -159,22 +143,10 @@ export default {
       this.isBusy = true;
 
       if (newValue) {
+          const password = store.state.encryptionKey;
+          const text = await SecureStorage.read(newValue, password);
 
-        let response = await api.get(newValue);
-
-        const text = response;
-        console.log(response);
-
-        this.documentId = response.uid;
-
-        if (text && Util.isJson(text)) {
-
-          const json = Util.parseJsonQuietly(text);
-          this.text = Security.decrypt(json, store.state.encryptionKey);
-
-        } else {
           this.text = text;
-        }
 
       } else {
         this.text = '';
