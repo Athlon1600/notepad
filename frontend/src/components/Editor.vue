@@ -1,17 +1,6 @@
 <template>
   <div class="flex flex-col flex-grow mt-5">
 
-      <div class="flex items-center">
-
-          <div class="">
-              <p>
-                  <input type="checkbox" id="checkbox" v-model="encrypt" @change="encryptCheckboxChanged" disabled/>
-                  <label for="checkbox" class="ml-2">Encrypted</label>
-              </p>
-          </div>
-
-      </div>
-
     <div>
       <p>All text is automatically encrypted and saved as you type.
 
@@ -61,8 +50,6 @@ export default {
     return {
       isBusy: true,
       text: '',
-      encrypt: true,
-      documentId: '',
       // stats
       charCount: 0,
       selectedCharCount: 0,
@@ -74,9 +61,6 @@ export default {
     // nothing
   },
   methods: {
-    encryptCheckboxChanged() {
-      this.writeNow();
-    },
     writeNow: async function () {
 
       try {
