@@ -45,7 +45,6 @@ import {SecureStorage} from "../classes/SecureStorage";
 const TEXT_MAX_LEN = 40000;
 
 export default {
-  name: 'editor',
   data() {
     return {
       isBusy: true,
@@ -72,7 +71,8 @@ export default {
         await SecureStorage.write(authKey, text, password);
 
       } catch (ex) {
-        alert('Something went wrong during saving');
+        const errorString = ex?.message || ex;
+        alert('Something went wrong during saving: ' + errorString);
       }
 
     },

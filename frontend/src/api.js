@@ -32,7 +32,8 @@ class Api {
             .then(response => {
 
                 if (!response.ok) {
-                    throw new Error('Error: ' + response.statusText);
+                    console.log(response);
+                    throw new Error(response.statusText);
                 }
 
                 return response.text();

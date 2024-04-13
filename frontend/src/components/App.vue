@@ -26,7 +26,7 @@
       <h1>{{ error }}</h1>
     </div>
 
-    <editor v-if="state.authKey"></editor>
+    <Editor v-if="state.authKey"></Editor>
     <Home v-else></Home>
 
   </div>
@@ -59,7 +59,7 @@ export default {
     },
     noteColor(){
         if (store.state.authKey) {
-            const hex = store.state.authKey.substr(0, 8);
+            const hex = (store.state.authKey || "").substring(0, 8);
             return '#' + hex;
         }
 
