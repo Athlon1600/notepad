@@ -109,12 +109,17 @@ export default {
       }
 
     },
-    async deleteForever() {
+    deleteForever() {
 
       if (confirm('Are you sure?? This action cannot be undone')) {
 
-        await store.actions.deleteNote();
-        store.actions.reset();
+            const key = store.state.authKey;
+
+            SecureStorage.remove(key).then(() => {
+                store.actions.reset();
+            }).catch(() => {
+                alert('Failed to delete');
+            });
       }
 
     }

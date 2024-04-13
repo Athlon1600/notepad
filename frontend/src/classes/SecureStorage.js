@@ -44,4 +44,8 @@ export class SecureStorage {
 
         return api.save(authKey, json);
     }
+
+    static async remove(authKey) {
+        return api.delete(authKey);
+    }
 }

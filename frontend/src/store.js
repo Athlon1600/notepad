@@ -58,14 +58,6 @@ const getters = {
 
 const actions = {
 
-    async saveContents(contents) {
-        await api.save(_state.authKey, contents);
-    },
-
-    async deleteNote() {
-        await api.delete(_state.authKey);
-    },
-
     reset() {
         _state.key = '';
     }
@@ -73,7 +65,7 @@ const actions = {
 
 export default {
     state: readonly(_state),
-    mutations,
     getters: getters,
+    mutations,
     actions: actions
 }
