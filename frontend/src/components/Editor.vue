@@ -1,11 +1,8 @@
 <template>
-  <div class="flex flex-col flex-grow mt-5">
+  <div class="w-full max-w-screen-lg mx-auto flex flex-col flex-grow mt-5 px-1 lg:px-0">
 
-    <div>
-      <p>🔒 All text is automatically encrypted and saved as you type.
-
-          You can store up to 128 <abbr title="where KB = 1024 bytes">KB</abbr> worth of text, or around 40 Word document pages.
-      </p>
+    <div class="toolbar">
+      <p>🔒 All text is automatically encrypted and saved as you type.</p>
     </div>
 
     <div id="plain_text_not_ace" class="flex flex-col flex-grow">

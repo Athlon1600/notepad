@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-12">
+    <div class="w-full max-w-screen-lg mx-auto mb-12">
 
         <div style="max-width:700px; margin:3em auto;">
 
@@ -125,7 +125,6 @@ import {APP_KEY} from "../config";
 import store from "../store";
 
 export default {
-    name: 'home',
     data() {
         return {
             isBusy: false,

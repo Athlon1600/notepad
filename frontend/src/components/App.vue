@@ -20,16 +20,8 @@
 
   </div>
 
-  <div class="mx-auto flex flex-col flex-grow" style="max-width: 1024px;">
-
-    <div v-if="error" style="height: 50vh; display:flex; justify-content: center; align-items: center; ">
-      <h1>{{ error }}</h1>
-    </div>
-
     <Editor v-if="state.authKey"></Editor>
     <Home v-else></Home>
-
-  </div>
 
 </template>
 
@@ -41,14 +33,12 @@ import store from "../store";
 import {HEADER_TEXT} from "../config";
 
 export default {
-  name: 'App',
   components: {
     Home,
     Editor
   },
   data() {
     return {
-      editor: false,
       state: store.state,
         banner: HEADER_TEXT
     }
