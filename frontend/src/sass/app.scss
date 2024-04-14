@@ -38,8 +38,8 @@ p {
 }
 
 #app {
-  @apply flex flex-col;
-  height: 100%;
+  @apply flex flex-col min-h-full;
+  @apply pb-12;
 }
 
 .header {
