@@ -39,7 +39,7 @@ p {
 
 #app {
   @apply flex flex-col min-h-full;
-  @apply pb-12;
+  @apply md:pb-12 pb-3;
 }
 
 .header {
