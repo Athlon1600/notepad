@@ -22,7 +22,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "forever": "^4.0.1",
-    "nodemon": "^2.0.22",
+    "nodemon": "^3.1.0",
     "ws": "^8.13.0"
   },
   "devDependencies": {
