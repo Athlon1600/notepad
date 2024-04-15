@@ -39,7 +39,7 @@ p {
 
 #app {
   @apply flex flex-col min-h-full;
-  @apply md:pb-12 pb-3;
+  @apply lg:pb-5 pb-2;
 }
 
 .header {
@@ -105,7 +105,6 @@ input[type=text] {
 
 }
 
-
 #notepad_features {
 
   & > li {
@@ -113,5 +112,13 @@ input[type=text] {
     margin-bottom: 0.5em;
   }
 
+}
+
+nav.nav-links {
+  @apply items-center;
+
+  & > a {
+    padding: 0 0.5rem;
+  }
 }
 
