@@ -7,6 +7,13 @@ notepad.mx {
 	encode gzip
 	header -Server
 
+	request_body {
+		max_size 1MB
+	}
+
+	# https://hstspreload.org/
+	# header Strict-Transport-Security max-age=31536000; includeSubDomains; preload
+
 	root * ./backend/public
 	file_server
 
