@@ -11,7 +11,7 @@ notepad.test, localhost {
 	root * ./backend/public
 	file_server
 
-	reverse_proxy /api/* localhost:3006 {
+	reverse_proxy /api/* localhost:3000 {
 		header_down -Server
 		header_down -X-Powered-By
 	}

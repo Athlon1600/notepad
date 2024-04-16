@@ -27,7 +27,7 @@ Install Docker 19+ on your new server:
 curl -sSL https://get.docker.com/ | sh
 ```
 
-Pull this repo and then run:
+and then run:
 
 ```shell
 git clone https://github.com/Athlon1600/notepad.git
@@ -36,6 +36,14 @@ docker compose up --build -d
 ```
 
 :heavy_check_mark: Application will be running on port 3000
+
+To sync all the notes from the main server, run this command:
+
+```shell
+docker compose exec -it backend sh -c "sh backend/bin/sync.sh"
+```
+
+and add it to your cron tab to do it automatically once a day or so.
 
 ## :hammer: Deployment to Production (manual)
 
@@ -52,12 +60,14 @@ npm run build && npm run start
 This will build Vue frontend first, and then move the resulting bundle to the `/public` directory
 of the backend application from which the frontend will be served from.
 
-Application will then be available on port `3000`
+:heavy_check_mark: Application will then be available on port 3000
+
+## :globe_with_meridians: Caddy Server
 
 If you want HTTPS support out of the box, you should install Caddy:
 
 ```shell
-wget -qO- https://github.com/caddyserver/caddy/releases/download/v2.7.6/caddy_2.7.6_linux_amd64.tar.gz | tar -xz && rm -f caddy_2.7.5_linux_amd64.tar.gz LICENSE README.md && chmod +x caddy && mv caddy /usr/local/bin/caddy
+wget -qO- https://github.com/caddyserver/caddy/releases/download/v2.7.6/caddy_2.7.6_linux_amd64.tar.gz | tar -xz && rm -f caddy_2.7.6_linux_amd64.tar.gz LICENSE README.md && chmod +x caddy && mv caddy /usr/local/bin/caddy
 ```
 
 Be sure to modify `backend/etc/Caddyfile` replacing `notepad.mx` with your own domain,
