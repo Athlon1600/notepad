@@ -57,14 +57,14 @@ Application will then be available on port `3000`
 If you want HTTPS support out of the box, you should install Caddy:
 
 ```shell
-wget -qO- https://github.com/caddyserver/caddy/releases/download/v2.7.5/caddy_2.7.5_linux_amd64.tar.gz | tar -xz && rm -f caddy_2.7.5_linux_amd64.tar.gz LICENSE README.md && chmod +x caddy && mv caddy /usr/local/bin/caddy
+wget -qO- https://github.com/caddyserver/caddy/releases/download/v2.7.6/caddy_2.7.6_linux_amd64.tar.gz | tar -xz && rm -f caddy_2.7.5_linux_amd64.tar.gz LICENSE README.md && chmod +x caddy && mv caddy /usr/local/bin/caddy
 ```
 
 Be sure to modify `backend/etc/Caddyfile` replacing `notepad.mx` with your own domain,
 and then run:
 
 ```shell
-cd backend && caddy run --config etc/Caddyfile 
+caddy start --config ./backend/etc/Caddyfile 
 ```
 
 ## :closed_lock_with_key: How it works

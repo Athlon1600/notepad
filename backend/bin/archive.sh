@@ -19,4 +19,4 @@ fi
 # change to storage directory just in case
 tar -czf archive.tar.gz -C "$BACKEND_DIR" storage && mv archive.tar.gz "$ARCHIVE_DIR"
 
-echo "$ARCHIVE_DIR"
+echo "Archive created in $ARCHIVE_DIR"

@@ -1,21 +1,23 @@
 {
-	# debug
-	admin off
+	debug
 }
 
-notepad.mx {
+notepad.test, localhost {
+	tls internal
 	encode gzip
+
 	header -Server
 
 	root * ./backend/public
 	file_server
 
-	reverse_proxy /api/* localhost:3000 {
+	reverse_proxy /api/* localhost:3006 {
 		header_down -Server
 		header_down -X-Powered-By
 	}
 
 	handle_errors {
+		header -Server
 		respond "{err.status_code} {err.status_text}"
 	}
 }
