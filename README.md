@@ -32,7 +32,7 @@ and then run:
 ```shell
 git clone https://github.com/Athlon1600/notepad.git
 cd notepad
-docker compose up --build -d
+docker compose up -d
 ```
 
 :heavy_check_mark: Application will be running on port 3000
@@ -108,6 +108,7 @@ https://github.com/Athlon1600/notepad/tree/v1.0.0-rc.1
 
 ## External Links
 
+- https://hub.docker.com/r/athlon1600/notepad
 - https://ricmoo.github.io/scrypt-js/
 - http://aes.online-domain-tools.com/
 - https://www.proxynova.com/tools/brute-force-calculator
