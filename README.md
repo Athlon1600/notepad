@@ -7,7 +7,7 @@ A simple web-based notepad for writing and securely storing notes online.
 Useful for easy sharing of text between people or devices.
 
 - No registration process. You use a passphrase as your login.
-- Supports client-side encryption
+- Fully encrypted at client-side. No one can read your notes, except you.
 - Extremely minimal and lightweight
 
 ## :star: Demo
