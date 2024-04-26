@@ -31,15 +31,15 @@ export class Server {
 
     protected enablePost() {
 
-        // 10 kilobytes of text MAX!! - ~10K chars
+        // 10 kilobytes of text MAX!! - ~10K chars, 5-6 word pages
         this.app.use(express.urlencoded({
             extended: true,
-            limit: "100kb"
+            limit: "10kb"
         }));
 
         // Expects: Content-Type: "text/plain"
         this.app.use(express.text({
-            limit: "100kb"
+            limit: "10kb"
         }));
     }
 
@@ -68,6 +68,14 @@ export class Server {
         this.app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 
             let msg = err.toString();
+
+            if (msg.includes("PayloadTooLargeError") || msg.includes("entity too large")) {
+
+                return res.status(413).json({
+                    status: 413,
+                    error: 'Note text limit reached'
+                });
+            }
 
             return res.status(500).json({
                 status: 500,
