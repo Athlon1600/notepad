@@ -45,6 +45,9 @@ docker compose exec -it backend sh -c "sh backend/bin/sync.sh"
 
 and add it to your cron tab to do it automatically once a day or so.
 
+See our Docker Hub page here:  
+https://hub.docker.com/r/athlon1600/notepad
+
 ## :hammer: Deployment to Production (manual)
 
 Rent a server for free at [linode.com](https://www.linode.com/lp/refer/?r=cee8aa429cd4cbb5a6e6d1ebfd8986f661d8ef4e)
