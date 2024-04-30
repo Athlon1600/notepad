@@ -2,6 +2,7 @@
 
 ![GitHub](https://img.shields.io/github/license/athlon1600/notepad)
 ![GitHub last commit](https://img.shields.io/github/last-commit/athlon1600/notepad)
+![Docker Pulls](https://img.shields.io/docker/pulls/athlon1600/notepad)
 
 A simple web-based notepad for writing and securely storing notes online.
 Useful for easy sharing of text between people or devices.
@@ -37,13 +38,11 @@ docker compose up -d
 
 :heavy_check_mark: Application will be running on port 3000
 
-To sync all the notes from the main server, run this command:
+Alternatively, you may run:
 
 ```shell
-docker compose exec -it backend sh -c "sh backend/bin/sync.sh"
+docker run -d -p 3000:3000 athlon1600/notepad
 ```
-
-and add it to your cron tab to do it automatically once a day or so.
 
 See our Docker Hub page here:  
 https://hub.docker.com/r/athlon1600/notepad
@@ -95,6 +94,27 @@ See the drawing below:
 This makes it so that no one besides you know the contents of your notes, or where they are stored on the server.
 
 ![storage](https://i.imgur.com/cXgoRLX.png)
+
+## :arrows_counterclockwise: Sharing Notes between instances
+
+Notes created on one server are compatible with all other deployments of this application,
+as long as passphrases are hashed using the same salt (`notepad.mx` by default as defined
+inside `frontend/src/config.js`).
+
+This makes it possible to import notes from one server to another, or host a backup mirror instance in case the main
+instance gets shut down.
+
+You can download all the notes created on the main **notepad.mx** instance here:
+
+- https://notepad.mx/archive.tar.gz
+
+extract everything to `backend/storage`, and now everyone using your application has access to those notes too.
+
+There is also a command that does all that for you automatically:
+
+```shell
+docker compose exec -it backend sh -c "sh backend/bin/sync.sh"
+```
 
 ## To-do list
 
