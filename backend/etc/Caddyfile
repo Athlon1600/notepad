@@ -1,6 +1,7 @@
 {
 	# debug
 	admin off
+	# order rate_limit before reverse_proxy
 }
 
 notepad.mx {
@@ -11,11 +12,14 @@ notepad.mx {
 		max_size 1MB
 	}
 
+	# cannot save more than once every 800 ms anyways
+	# rate_limit /api* {remote.ip} 60r/m
+
 	# https://hstspreload.org/
 	# header Strict-Transport-Security max-age=31536000; includeSubDomains; preload
 
 	root * ./backend/public
-	file_server
+	file_server browse
 
 	reverse_proxy /api/* localhost:3000 {
 		header_down -Server
