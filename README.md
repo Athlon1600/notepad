@@ -69,7 +69,7 @@ of the backend application from which the frontend will be served from.
 If you want HTTPS support out of the box, you should install Caddy:
 
 ```shell
-wget -qO- https://github.com/caddyserver/caddy/releases/download/v2.7.6/caddy_2.7.6_linux_amd64.tar.gz | tar -xz && rm -f caddy_2.7.6_linux_amd64.tar.gz LICENSE README.md && chmod +x caddy && mv caddy /usr/local/bin/caddy
+wget -qO- https://github.com/caddyserver/caddy/releases/download/v2.8.4/caddy_2.8.4_linux_amd64.tar.gz | tar -xz && rm -f caddy_2.8.4_linux_amd64.tar.gz LICENSE README.md && chmod +x caddy && mv caddy /usr/local/bin/caddy
 ```
 
 Be sure to modify `backend/etc/Caddyfile` replacing `notepad.mx` with your own domain,
