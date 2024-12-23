@@ -116,6 +116,14 @@ There is also a command that does all that for you automatically:
 docker compose exec -it backend sh -c "sh backend/bin/sync.sh"
 ```
 
+## Troubleshooting
+
+> ERROR in [prerender-spa-plugin] Unable to prerender all routes!  
+> ERROR in Failed to launch chrome!  
+> error while loading shared libraries: libX11-xcb.so.1: cannot open shared object file: No such file or directory
+
+Make sure your system has all the necessary dependencies installed. See this link - https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#chrome-doesnt-launch-on-linux
+
 ## To-do list
 
 - rewrite frontend to use TypeScript
@@ -135,4 +143,3 @@ https://github.com/Athlon1600/notepad/tree/v1.0.0-rc.1
 - https://ricmoo.github.io/scrypt-js/
 - http://aes.online-domain-tools.com/
 - https://www.proxynova.com/tools/brute-force-calculator
-- https://en.wikipedia.org/wiki/Base62
