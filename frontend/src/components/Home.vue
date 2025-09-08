@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full max-w-screen-lg mx-auto">
+    <div class="w-full max-w-screen-lg mx-auto px-1">
 
         <div style="max-width:700px; margin:3em auto;">
 
