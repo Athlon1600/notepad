@@ -1,8 +1,8 @@
 # Notepad
 
-![GitHub](https://img.shields.io/github/license/athlon1600/notepad)
 ![GitHub last commit](https://img.shields.io/github/last-commit/athlon1600/notepad)
 ![Docker Pulls](https://img.shields.io/docker/pulls/athlon1600/notepad)
+![GitHub](https://img.shields.io/github/license/athlon1600/notepad)
 
 A simple web-based notepad for writing and securely storing notes online.
 Useful for easy sharing of text between people or devices.
@@ -69,7 +69,7 @@ of the backend application from which the frontend will be served from.
 If you want HTTPS support out of the box, you should install Caddy:
 
 ```shell
-wget -qO- https://github.com/caddyserver/caddy/releases/download/v2.8.4/caddy_2.8.4_linux_amd64.tar.gz | tar -xz && rm -f caddy_2.8.4_linux_amd64.tar.gz LICENSE README.md && chmod +x caddy && mv caddy /usr/local/bin/caddy
+wget -qO- https://raw.githubusercontent.com/Athlon1600/useful/master/caddy/caddy_linux_amd64.sh | bash
 ```
 
 Be sure to modify `backend/etc/Caddyfile` replacing `notepad.mx` with your own domain,
